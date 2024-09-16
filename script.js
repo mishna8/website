@@ -1,6 +1,6 @@
-const sgMail = require('@sendgrid/mail');
+import { setApiKey, send } from '@sendgrid/mail';
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+setApiKey(process.env.SENDGRID_API_KEY);
 
 const msg = {
   to: 'michal.na8@gmail.com',
@@ -9,7 +9,7 @@ const msg = {
   text: 'hi there here is the form detailes:\nName: ' + formData.name + '\nEmail: ' + formData.email,
 };
 
-sgMail.send(msg)
+send(msg)
   .then(() => {
     console.log('Email sent');
   })
